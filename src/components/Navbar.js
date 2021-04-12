@@ -24,6 +24,10 @@ const Navbar = () => {
           <Link className='nav-link' to='/heroes'>
             Heroes
           </Link>
+
+          <Link className='nav-link' to='/archive'>
+            Archive
+          </Link>
         </div>
       </div>
     </nav>
