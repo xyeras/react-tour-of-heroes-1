@@ -23,7 +23,7 @@ const HeroPage = () => {
     image_url: '',
   });
 
-  const { heroes, updatedFeatured } = useContext(GlobalContext);
+  const { heroes, updateFeatured } = useContext(GlobalContext);
 
   /* TODO: Uncomment useEffect after heroes data set is hooked in */
   useEffect(() => {
