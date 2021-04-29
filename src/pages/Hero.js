@@ -22,6 +22,8 @@ const HeroPage = () => {
     image_url: '',
   });
 
+  const { heroes, updateFeatured } = useContext(GlobalContext);
+
   /* TODO: Uncomment useEffect after heroes data set is hooked in */
   // useEffect(() => {
   //   let foundHero = heroes.find(h => h.id === +heroId);
