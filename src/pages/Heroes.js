@@ -1,24 +1,26 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { GlobalContext } from '../context/GlobalContext';
 import HeroCard from '../components/HeroCard';
 
 const HeroesPage = () => {
   const [filteredHeroes, setFilteredHeroes] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const { heroes } = useContext(GlobalContext);
 
   /* TODO: Uncomment useEffect after heroes data set is hooked in */
-  // useEffect(() => {
-  //   const foundHeroes = heroes.filter(hd => {
-  //     return (
-  //       hd.superhero.toLowerCase().includes(searchTerm.toLowerCase()) +
-  //       hd.alter_ego.toLowerCase().includes(searchTerm.toLowerCase()) +
-  //       hd.publisher.toLowerCase().includes(searchTerm.toLowerCase())
-  //     );
-  //   });
+  useEffect(() => {
+    const foundHeroes = heroes.filter(hd => {
+      return (
+        hd.superhero.toLowerCase().includes(searchTerm.toLowerCase()) +
+        hd.alter_ego.toLowerCase().includes(searchTerm.toLowerCase()) +
+        hd.publisher.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    });
 
-  //   searchTerm === ''
-  //     ? setFilteredHeroes(heroes)
-  //     : setFilteredHeroes(foundHeroes);
-  // }, [searchTerm, heroes]);
+    searchTerm === ''
+      ? setFilteredHeroes(heroes)
+      : setFilteredHeroes(foundHeroes);
+  }, [searchTerm, heroes]);
 
   const handleChange = event => {
     setSearchTerm(event.target.value);
