@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { heroData } from '../data/heroes';
 import { useParams } from 'react-router-dom';
 import { FaStar, FaRegStar } from 'react-icons/fa';
 
@@ -22,26 +21,23 @@ const HeroPage = () => {
     featured: false,
     image_url: '',
   });
-  const [alert, setAlert] = useState(false);
 
-  useEffect(() => {
-    let foundHero = heroData.find(h => h.id === +heroId);
-    // console.log(foundHero);
-    setHero(foundHero);
-  }, [hero, heroId, alert]);
+  /* TODO: Uncomment useEffect after heroes data set is hooked in */
+  // useEffect(() => {
+  //   let foundHero = heroes.find(h => h.id === +heroId);
+  //   // console.log(foundHero);
+  //   setHero(foundHero);
+  // }, [hero, heroId, heroes]);
 
-  const updateFeatured = supId => {
-    // first find the hero from heroData by heroId
-    let foundHero = heroData.find(h => h.id === +supId);
-    // updated foundHero.featured to be opposite of its current value
-    foundHero.featured = !foundHero.featured;
-    // setHero(foundHero);
-    setAlert(true);
-    setTimeout(() => {
-      setAlert(false);
-    }, 2000);
-    // hero.featured = !hero.featured;
-  };
+  if (!hero.id) {
+    return (
+      <div className='row text-center'>
+        <div className='col'>
+          <h2 className='text-danger'>Sorry! No Hero to show :/</h2>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div id='hero'>
@@ -62,8 +58,8 @@ const HeroPage = () => {
                   <div className='th-card-header d-flex justify-content-between'>
                     <span>
                       <a
-                        href='javascript:void(0)'
-                        onClick={() => updateFeatured(hero.id)}>
+                        // onClick={() => updateFeatured(hero.id)}
+                        href='javascript:void(0)'>
                         {hero.featured ? (
                           <FaStar style={{ color: 'gold' }} />
                         ) : (
