@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { GiBatMask } from 'react-icons/gi';
 import { FaStar, FaRegStar } from 'react-icons/fa';
 
-const HeroCard = ({ hero, updateFeatured }) => {
+const HeroCard = ({ hero }) => {
   return (
     <div className='card mb-3'>
       {/* header */}
@@ -39,8 +39,8 @@ const HeroCard = ({ hero, updateFeatured }) => {
           </Link>
           <a
             href='javascript:void(0)'
-            className='card-link'
-            onClick={() => updateFeatured(hero.id)}>
+            // onClick={() => updateFeatured(hero.id)}
+            className='card-link'>
             {hero.featured ? <FaStar /> : <FaRegStar />}
           </a>
         </div>
